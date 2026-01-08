@@ -28,13 +28,24 @@ export default function NotificationPanel() {
     }
   };
 
-  // Fetch notifications on component mount and when panel opens
+  // Fetch notifications on component mount and set up background refresh
+  useEffect(() => {
+    // Fetch immediately on mount
+    fetchNotifications();
+
+    // Set up background refresh every 60 seconds
+    const backgroundInterval = setInterval(fetchNotifications, 60000);
+
+    return () => clearInterval(backgroundInterval);
+  }, []);
+
+  // Fetch notifications when panel opens and set up faster refresh
   useEffect(() => {
     if (isOpen) {
       fetchNotifications();
-      // Refresh every 30 seconds while panel is open
-      const interval = setInterval(fetchNotifications, 30000);
-      return () => clearInterval(interval);
+      // Refresh every 30 seconds while panel is open for real-time updates
+      const panelInterval = setInterval(fetchNotifications, 30000);
+      return () => clearInterval(panelInterval);
     }
   }, [isOpen]);
 

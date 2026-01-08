@@ -55,7 +55,7 @@ export default function DashboardWelcome() {
     <section className="bg-white rounded-lg shadow-sm p-5 md:p-6 lg:p-8">
       <div className="flex flex-col lg:flex-row md:items-center md:justify-between gap-4">
         <div className="flex items-center gap-4">
-          <div className="flex items-center justify-center w-14 h-14 rounded-lg bg-gradient-to-br from-red-800 to-red-900 text-white text-xl font-bold">
+          <div className="flex items-center justify-center w-14 h-14 rounded-lg bg-gradient-to-br from-red-700 to-red-800 text-white text-xl font-bold">
             {firstName.charAt(0).toUpperCase()}
           </div>
 
@@ -69,12 +69,12 @@ export default function DashboardWelcome() {
 
         {user?.role === 'admin' || user?.role === 'staff-member' ? (
         <div className="flex flex-col lg:flex-row md:items-center gap-3">
-          <Link href="/dashboard/quote-requests" className="inline-flex justify-center items-center gap-2 px-3 py-1 md:py-2 bg-red-900 text-white rounded-md text-sm hover:bg-red-800 cursor-pointer">
+          <Link href="/dashboard/quote-requests" className="inline-flex justify-center items-center gap-2 px-3 py-1 md:py-2 bg-red-700 text-white rounded-md text-sm hover:bg-red-800 cursor-pointer">
             <Briefcase />
             Manage Shipments
           </Link>
 
-          <Link href="/dashboard/add-blog" className="inline-flex justify-center items-center gap-2 px-3 py-1 md:py-2 border bg-gray-100 border-gray-200 rounded-md text-sm text-gray-700 hover:bg-gray-50 cursor-pointer">
+          <Link href="/dashboard/add-blog" className="inline-flex justify-center items-center gap-2 px-3 py-1 md:py-2 border bg-gray-100 border-red-600 rounded-md text-sm text-red-700 hover:bg-gray-50 cursor-pointer">
             <NotepadText />
             Publish Blog Posts
           </Link>

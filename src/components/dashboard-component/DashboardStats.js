@@ -47,17 +47,17 @@ function Icon({ name }) {
           <rect x="3" y="3" width="18" height="18" rx="2" strokeWidth="2" />
         </svg>
       )
-    case 'projects':
-      return (
-        <svg className="w-6 h-6 text-teal-600" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M3 7h18M3 12h18M3 17h18" />
-        </svg>
-      )
     case 'requests':
       return (
         <svg className="w-6 h-6 text-sky-600" viewBox="0 0 24 24" fill="none" stroke="currentColor">
           <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3" />
           <circle cx="12" cy="12" r="10" strokeWidth="2" />
+        </svg>
+      )
+    case 'newsletter':
+      return (
+        <svg className="w-6 h-6 text-purple-600" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
         </svg>
       )
     default:
@@ -120,12 +120,12 @@ export default function DashboardStats({ data = {} }) {
 
         // Fallback to provided data or defaults
         const defaults = {
-          users: 0,
-          blogs: 0,
-          contacts: 0,
           quotes: 0,
-          projects: 0,
           requests: 0,
+          contacts: 0,
+          blogs: 0,
+          users: 0,
+          newsletter: 0,
         };
         setStats({ ...defaults, ...data });
       } finally {
@@ -145,21 +145,21 @@ export default function DashboardStats({ data = {} }) {
 
   // Use provided data if no token, otherwise use fetched stats
   const displayStats = stats || data || {
-    users: 0,
-    blogs: 0,
-    contacts: 0,
     quotes: 0,
-    projects: 0,
     requests: 0,
+    contacts: 0,
+    blogs: 0,
+    users: 0,
+    newsletter: 0,
   };
 
   const items = [
-    { key: 'users', label: 'Active Users', value: displayStats.users, icon: 'users' },
-    { key: 'blogs', label: 'Published Blogs', value: displayStats.blogs, icon: 'blogs' },
-    { key: 'contacts', label: 'Contact Forms', value: displayStats.contacts, icon: 'contacts' },
-    { key: 'quotes', label: 'Quote Requests', value: displayStats.quotes, icon: 'quotes' },
-    { key: 'projects', label: 'Projects', value: displayStats.projects, icon: 'projects' },
+    { key: 'quotes', label: 'Total Quote Requests', value: displayStats.quotes, icon: 'quotes' },
     { key: 'requests', label: 'Pending Requests', value: displayStats.requests, icon: 'requests' },
+    { key: 'contacts', label: 'Total Contacts', value: displayStats.contacts, icon: 'contacts' },
+    { key: 'blogs', label: 'Published Blogs', value: displayStats.blogs, icon: 'blogs' },
+    { key: 'users', label: 'Active Users', value: displayStats.users, icon: 'users' },
+    { key: 'newsletter', label: 'Newsletter Subscribers', value: displayStats.newsletter, icon: 'newsletter' },
   ];
 
   if (error && !stats) {

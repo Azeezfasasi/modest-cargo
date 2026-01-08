@@ -5,6 +5,8 @@ import DashboardWelcome from "@/components/dashboard-component/DashboardWelcome"
 import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
 import { Commet } from "react-loading-indicators";
+import { Ship } from "lucide-react";
+import ShipmentChart from "@/components/dashboard-component/ShipmentChart";
 
 export default function Dashboard() {
   const { isAuthenticated, loading } = useAuth();
@@ -30,7 +32,10 @@ export default function Dashboard() {
       <DashboardWelcome />
 
       {user?.role === 'admin' ? (
-        <DashboardStats />
+        <>
+          <DashboardStats />
+          <ShipmentChart />
+        </>
       ) : null}
     </>
   );

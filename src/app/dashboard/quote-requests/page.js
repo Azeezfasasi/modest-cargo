@@ -446,9 +446,9 @@ const ManageQuoteRequests = () => {
 										<th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
 											Name & Company
 										</th>
-										<th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+										{/* <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
 											Service
-										</th>
+										</th> */}
 										<th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
 											Status
 										</th>
@@ -475,11 +475,11 @@ const ManageQuoteRequests = () => {
 											<div className="font-medium text-gray-900">{request.fullName || request.name}</div>
 												<div className="text-sm text-gray-500">{request.company}</div>
 											</td>
-											<td className="px-6 py-4">
+											{/* <td className="px-6 py-4">
 												<span className="inline-flex px-3 py-1 rounded-full text-xs font-medium bg-orange-50 text-orange-700">
 													{request.serviceType || request.service}
 												</span>
-											</td>
+											</td> */}
 											<td className="px-6 py-4 whitespace-nowrap">
 												<span className={`inline-flex px-3 py-1 rounded-full text-xs font-semibold ${getStatusColor(request.status)}`}>
 												{getStatusDisplay(request.status)}

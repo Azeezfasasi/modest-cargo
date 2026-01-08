@@ -51,7 +51,7 @@ export default function Login() {
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-6">
       {!mounted || (loading && !user) ? (
         <div className="text-center">
-          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-900"></div>
+          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-red-600"></div>
           <p className="mt-4 text-gray-600">Loading...</p>
         </div>
       ) : (
@@ -73,7 +73,7 @@ export default function Login() {
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-900"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600"
               placeholder="you@example.com"
             />
           </div>
@@ -86,7 +86,7 @@ export default function Login() {
               value={formData.password}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-900"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600"
               placeholder="Enter your password"
             />
           </div>
@@ -102,14 +102,14 @@ export default function Login() {
               />
               Remember me
             </label>
-            <Link href="/forgot-password" className="text-blue-900 hover:text-blue-800 font-medium">
+            <Link href="/forgot-password" className="text-red-600 hover:text-red-700 font-medium">
               Forgot password?
             </Link>
           </div>
 
           <button
             type="submit"
-            className="w-full bg-blue-900 text-white py-3 rounded-lg font-semibold shadow hover:bg-blue-800 transition"
+            className="w-full bg-red-600 text-white py-3 rounded-lg font-semibold shadow hover:bg-red-700 transition"
             disabled={submitting}
           >
             {submitting ? "Logging in..." : "Login"}
@@ -118,7 +118,7 @@ export default function Login() {
 
         <p className="text-center text-gray-600 mt-6">
           Don&apos;t have an account?{" "}
-          <Link href="/register" className="text-blue-900 hover:text-blue-800 font-medium">
+          <Link href="/register" className="text-red-600 hover:text-red-700 font-medium">
             Register
           </Link>
         </p>

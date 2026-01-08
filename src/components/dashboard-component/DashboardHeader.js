@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useAuth } from '../../context/AuthContext';
+import { ArrowLeftRight } from 'lucide-react';
 
 export default function DashboardHeader({ onToggleSidebar, onToggleMobileMenu }) {
   const { user, logout } = useAuth();
@@ -41,7 +42,7 @@ export default function DashboardHeader({ onToggleSidebar, onToggleMobileMenu })
             <button
               aria-label="Open menu"
               onClick={onToggleMobileMenu}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-700 md:hidden"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-700 lg:hidden"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -51,15 +52,13 @@ export default function DashboardHeader({ onToggleSidebar, onToggleMobileMenu })
             <button
               aria-label="Toggle sidebar"
               onClick={onToggleSidebar}
-              className="hidden md:inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-700"
+              className="hidden lg:inline-flex items-center justify-center p-2 rounded-md bg-red-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-700"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
-              </svg>
+              <ArrowLeftRight className="w-4 h-4 text-red-700 transition-transform" />
             </button>
 
             <Link href="/" className="flex items-center gap-3">
-              <Image src="/images/modestlogo.png" alt="Modest Cargo Logo" width={160} height={40} className="w-14 md:w-16 block rounded-md p-1" />
+              <Image src="/images/modestlogo.png" alt="Modest Cargo Logo" width={160} height={40} className="w-[70px] lg:w-[90px] block rounded-md p-1" />
             </Link>
           </div>
 
@@ -81,8 +80,8 @@ export default function DashboardHeader({ onToggleSidebar, onToggleMobileMenu })
                   <Image src={avatar} alt="User avatar" width={32} height={32} className="object-cover h-10 w-10" />
                 </div>
                 <div className='flex flex-col items-start'>
-                  <span className="hidden sm:block text-sm text-gray-700">{fullName || 'User'}</span>
-                  <span className="hidden sm:block text-sm text-gray-700">{role.charAt(0).toUpperCase() + role.slice(1)}</span>
+                  <span className="hidden sm:block text-sm text-gray-700 font-medium">{fullName || 'User'}</span>
+                  <span className="hidden sm:block text-sm text-red-600">{role.charAt(0).toUpperCase() + role.slice(1)}</span>
                 </div>
                 <svg className="w-4 h-4 ml-1 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg>
               </button>
@@ -94,7 +93,7 @@ export default function DashboardHeader({ onToggleSidebar, onToggleMobileMenu })
                     </li>
                     {user?.role === 'admin' || user?.role === 'staff-member' ? (
                     <li>
-                      <Link href="/dashboard/all-projects" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition w-full text-left">Manage Projects</Link>
+                      <Link href="/dashboard/quote-requests" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition w-full text-left">Manage Shipments</Link>
                     </li>
                     ) : null}
                     {user?.role === 'admin' || user?.role === 'staff-member' ? (

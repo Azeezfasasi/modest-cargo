@@ -224,7 +224,7 @@ const ContactFormResponses = () => {
 	if (loading) {
 		return (
 			<div className="flex justify-center items-center py-12">
-				<p className="text-gray-600"><Commet color="#155dfc" size="medium" text="Loading" textColor="#155dfc" /></p>
+				<p className="text-gray-600"><Commet color="#FF0000" size="medium" text="Loading" textColor="#FFB300" /></p>
 			</div>
 		)
 	}
@@ -245,7 +245,7 @@ const ContactFormResponses = () => {
 								placeholder="Search by name, email, subject, or message..."
 								value={searchQuery}
 								onChange={handleSearch}
-								className="w-full pl-10 pr-2 md:pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-[14px] md:text-[16px] focus:border-transparent outline-none"
+								className="w-full pl-10 pr-2 md:pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 text-[14px] md:text-[16px] focus:border-transparent outline-none"
 							/>
 						</div>
 
@@ -567,7 +567,7 @@ const ContactFormResponses = () => {
 										setShowViewModal(false)
 										handleReplyClick(selectedResponse)
 									}}
-									className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 font-medium transition flex items-center gap-2"
+									className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 font-medium transition flex items-center gap-2"
 								>
 									<Reply className="w-4 h-4" />
 									Reply
@@ -629,7 +629,7 @@ const ContactFormResponses = () => {
 								</button>
 								<button
 									onClick={handleSubmitReply}
-									className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 font-medium transition flex items-center gap-2"
+									className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 font-medium transition flex items-center gap-2"
 								>
 									<Reply className="w-4 h-4" />
 									Send Reply

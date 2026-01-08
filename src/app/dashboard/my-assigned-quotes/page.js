@@ -87,7 +87,8 @@ const MyAssignedQuotes = () => {
 					(quote.serviceType || quote.service || '').toLowerCase().includes(searchStr) ||
 					(quote.pickupLocation || '').toLowerCase().includes(searchStr) ||
 					(quote.deliveryLocation || '').toLowerCase().includes(searchStr) ||
-					(quote.description || quote.message || '').toLowerCase().includes(searchStr)
+					(quote.description || quote.message || '').toLowerCase().includes(searchStr) ||
+					(quote.trackingNumber || quote.trackingNumber || '').toLowerCase().includes(searchStr)
 				)
 			})
 		}
@@ -278,7 +279,7 @@ const MyAssignedQuotes = () => {
 	if (loading) {
 		return (
 			<div className="flex justify-center items-center py-12">
-				<p className="text-gray-600"><Commet color="#155dfc" size="medium" text="Loading" textColor="#155dfc" /></p>
+				<p className="text-gray-600"><Commet color="#FF0000" size="medium" text="Loading" textColor="#FFB300" /></p>
 			</div>
 		)
 	}
@@ -583,7 +584,7 @@ const MyAssignedQuotes = () => {
 										setShowViewModal(false)
 										handleReplyClick(selectedQuote)
 									}}
-									className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 font-medium transition flex items-center gap-2"
+									className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 font-medium transition flex items-center gap-2"
 								>
 									<Reply className="w-4 h-4" />
 									Reply
@@ -645,7 +646,7 @@ const MyAssignedQuotes = () => {
 								</button>
 								<button
 									onClick={handleSubmitReply}
-									className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 font-medium transition flex items-center gap-2"
+									className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 font-medium transition flex items-center gap-2"
 								>
 									<Reply className="w-4 h-4" />
 									Send Quote

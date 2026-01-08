@@ -254,7 +254,7 @@ function EditBlogContent() {
 				<div className="mb-8 flex items-center gap-4">
 					<Link
 						href="/dashboard/manage-blog"
-						className="flex items-center gap-2 text-indigo-600 hover:text-indigo-700 font-medium"
+						className="flex items-center gap-2 text-red-600 hover:text-red-700 font-medium"
 					>
 						<ArrowLeft className="w-5 h-5" />
 						Back to Posts
@@ -304,7 +304,7 @@ function EditBlogContent() {
 								value={formData.postTitle}
 								onChange={handleInputChange}
 								required
-								className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none"
+								className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none"
 								placeholder="e.g., Getting Started with Next.js"
 							/>
 							<p className="text-xs text-gray-500 mt-1">This will appear as the main headline</p>
@@ -320,7 +320,7 @@ function EditBlogContent() {
 								name="urlSlug"
 								value={formData.urlSlug}
 								onChange={handleInputChange}
-								className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none bg-gray-50"
+								className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none bg-gray-50"
 								placeholder="auto-generated from title"
 							/>
 							<p className="text-xs text-gray-500 mt-1">Auto-generated from title, edit if needed</p>
@@ -336,7 +336,7 @@ function EditBlogContent() {
 										value={formData.author}
 										onChange={handleInputChange}
 										required
-										className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none"
+										className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none"
 										placeholder="Author name"
 									/>
 								</div>
@@ -350,7 +350,7 @@ function EditBlogContent() {
 									name="publishDate"
 									value={formData.publishDate}
 									onChange={handleInputChange}
-									className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none"
+									className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none"
 								/>
 							</div>
 							</div>
@@ -429,7 +429,7 @@ function EditBlogContent() {
 								onChange={handleContentChange}
 								required
 								rows="12"
-								className="w-full px-4 py-3 border-0 focus:ring-2 focus:ring-indigo-500 outline-none resize-none font-mono text-sm"
+								className="w-full px-4 py-3 border-0 focus:ring-2 focus:ring-red-600 outline-none resize-none font-mono text-sm"
 								placeholder="Write your blog post content here... Supports Markdown formatting"
 							/>
 						</div>
@@ -450,7 +450,7 @@ function EditBlogContent() {
 									value={formData.category}
 									onChange={handleInputChange}
 									required
-									className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none"
+									className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none"
 								>
 									<option value="">Select a category</option>
 									<option value="cargo">Cargo</option>
@@ -471,7 +471,7 @@ function EditBlogContent() {
 								name="tags"
 								value={formData.tags.join(', ')}
 								onChange={handleInputChange}
-								className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none"
+								className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none"
 								placeholder="Separate tags with commas"
 							/>
 							<p className="text-xs text-gray-500 mt-1">Separate multiple tags with commas</p>
@@ -614,7 +614,7 @@ function EditBlogContent() {
 						<button
 							type="submit"
 							disabled={saving}
-							className="flex-1 bg-indigo-600 text-white font-medium py-2 px-4 rounded-md hover:bg-indigo-700 disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+							className="flex-1 bg-red-600 text-white font-medium py-2 px-4 rounded-md hover:bg-red-700 disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-red-500"
 						>
 							{saving ? 'Saving...' : 'Save Changes'}
 						</button>

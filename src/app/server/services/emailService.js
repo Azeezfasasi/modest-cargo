@@ -1,9 +1,64 @@
 import { sendEmailViaBrevo } from '../utils/brevoEmailService';
+import User from '../models/User';
 
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'admin@modestcargo.com';
-const SENDER_EMAIL = process.env.BREVO_SENDER_EMAIL || 'noreply@modestcargo.com';
-const SENDER_NAME = process.env.BREVO_SENDER_NAME || 'Modest Cargo';
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL || process.env.ADMIN_NOTIFICATION_EMAIL || 'admin@modestcargo.com';
+const SENDER_EMAIL = process.env.BREVO_SENDER_EMAIL || process.env.NEWSLETTER_FROM_EMAIL || 'noreply@modestcargo.com';
+const SENDER_NAME = process.env.BREVO_SENDER_NAME || process.env.NEWSLETTER_FROM_NAME || 'Modest Cargo';
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+
+/**
+ * Get all staff members and admin emails
+ * @returns {Promise<Array<string>>} Array of email addresses
+ */
+const getAdminAndStaffEmails = async () => {
+  try {
+    const staffMembers = await User.find({ 
+      $or: [
+        { role: 'admin' },
+        { role: 'staff-member' }
+      ]
+    }).select('email').lean();
+    
+    const emails = staffMembers.map(member => member.email).filter(email => email);
+    
+    // Ensure admin email is included
+    if (!emails.includes(ADMIN_EMAIL)) {
+      emails.push(ADMIN_EMAIL);
+    }
+    
+    return [...new Set(emails)]; // Remove duplicates
+  } catch (error) {
+    console.error('Error fetching admin and staff emails:', error);
+    return [ADMIN_EMAIL]; // Fallback to admin email only
+  }
+};
+
+/**
+ * Send email to admin and all staff members
+ */
+const sendEmailToAdminAndStaff = async (emailData, htmlContent, subject) => {
+  try {
+    const recipients = await getAdminAndStaffEmails();
+    
+    console.log(`📧 Sending email to ${recipients.length} recipients (admin + staff):`, recipients);
+    
+    for (const email of recipients) {
+      try {
+        await sendEmailViaBrevo({
+          to: email,
+          subject: subject,
+          htmlContent: htmlContent,
+          senderEmail: SENDER_EMAIL,
+          senderName: SENDER_NAME,
+        });
+      } catch (error) {
+        console.error(`Failed to send email to ${email}:`, error.message);
+      }
+    }
+  } catch (error) {
+    console.error('Error sending email to admin and staff:', error);
+  }
+};
 
 /**
  * HTML Email Template Wrapper
@@ -232,6 +287,7 @@ const formatQuoteDetails = (quote) => {
  */
 export const sendQuoteCreatedEmail = async (quote) => {
   try {
+    console.log('📧 Sending quote created email for:', { trackingNumber: quote.trackingNumber, email: quote.email });
     const clientContent = `
       <p>Dear ${quote.fullName},</p>
       
@@ -294,14 +350,12 @@ export const sendQuoteCreatedEmail = async (quote) => {
       senderName: SENDER_NAME,
     });
 
-    // Send to admin
-    await sendEmailViaBrevo({
-      to: ADMIN_EMAIL,
-      subject: `New Quote Request - ${quote.fullName} (${quote.trackingNumber})`,
-      htmlContent: getEmailTemplate(adminContent, 'New Quote Request'),
-      senderEmail: SENDER_EMAIL,
-      senderName: SENDER_NAME,
-    });
+    // Send to admin and all staff members
+    await sendEmailToAdminAndStaff(
+      {},
+      getEmailTemplate(adminContent, 'New Quote Request'),
+      `New Quote Request - ${quote.fullName} (${quote.trackingNumber})`
+    );
 
     console.log('✓ Quote created emails sent successfully');
   } catch (error) {
@@ -364,14 +418,12 @@ export const sendQuoteUpdatedEmail = async (quote, changedFields = {}) => {
       senderName: SENDER_NAME,
     });
 
-    // Send to admin
-    await sendEmailViaBrevo({
-      to: ADMIN_EMAIL,
-      subject: `Quote Updated - ${quote.fullName} (${quote.trackingNumber})`,
-      htmlContent: getEmailTemplate(adminContent, 'Quote Updated'),
-      senderEmail: SENDER_EMAIL,
-      senderName: SENDER_NAME,
-    });
+    // Send to admin and all staff members
+    await sendEmailToAdminAndStaff(
+      {},
+      getEmailTemplate(adminContent, 'Quote Updated'),
+      `Quote Updated - ${quote.fullName} (${quote.trackingNumber})`
+    );
 
     console.log('✓ Quote updated emails sent successfully');
   } catch (error) {
@@ -429,14 +481,12 @@ export const sendQuoteDeletedEmail = async (quote) => {
       senderName: SENDER_NAME,
     });
 
-    // Send to admin
-    await sendEmailViaBrevo({
-      to: ADMIN_EMAIL,
-      subject: `Quote Deleted - ${quote.fullName} (${quote.trackingNumber})`,
-      htmlContent: getEmailTemplate(adminContent, 'Quote Deleted'),
-      senderEmail: SENDER_EMAIL,
-      senderName: SENDER_NAME,
-    });
+    // Send to admin and all staff members
+    await sendEmailToAdminAndStaff(
+      {},
+      getEmailTemplate(adminContent, 'Quote Deleted'),
+      `Quote Deleted - ${quote.fullName} (${quote.trackingNumber})`
+    );
 
     console.log('✓ Quote deleted emails sent successfully');
   } catch (error) {
@@ -513,14 +563,12 @@ export const sendQuoteStatusChangedEmail = async (quote, oldStatus, newStatus) =
       senderName: SENDER_NAME,
     });
 
-    // Send to admin
-    await sendEmailViaBrevo({
-      to: ADMIN_EMAIL,
-      subject: `Quote Status Changed - ${quote.fullName} (${quote.trackingNumber})`,
-      htmlContent: getEmailTemplate(adminContent, 'Quote Status Changed'),
-      senderEmail: SENDER_EMAIL,
-      senderName: SENDER_NAME,
-    });
+    // Send to admin and all staff members
+    await sendEmailToAdminAndStaff(
+      {},
+      getEmailTemplate(adminContent, 'Quote Status Changed'),
+      `Quote Status Changed - ${quote.fullName} (${quote.trackingNumber})`
+    );
 
     console.log('✓ Quote status changed emails sent successfully');
   } catch (error) {
@@ -581,14 +629,12 @@ export const sendQuoteReplyEmail = async (quote, reply, senderName) => {
       senderName: SENDER_NAME,
     });
 
-    // Send to admin
-    await sendEmailViaBrevo({
-      to: ADMIN_EMAIL,
-      subject: `Quote Reply Sent - ${quote.fullName} (${quote.trackingNumber})`,
-      htmlContent: getEmailTemplate(adminContent, 'Quote Reply Sent'),
-      senderEmail: SENDER_EMAIL,
-      senderName: SENDER_NAME,
-    });
+    // Send to admin and all staff members
+    await sendEmailToAdminAndStaff(
+      {},
+      getEmailTemplate(adminContent, 'Quote Reply Sent'),
+      `Quote Reply Sent - ${quote.fullName} (${quote.trackingNumber})`
+    );
 
     console.log('✓ Quote reply emails sent successfully');
   } catch (error) {
@@ -641,14 +687,12 @@ export const sendQuoteAssignedEmail = async (quote, staffMember) => {
       senderName: SENDER_NAME,
     });
 
-    // Send to admin
-    await sendEmailViaBrevo({
-      to: ADMIN_EMAIL,
-      subject: `Quote Assigned - ${quote.fullName} to ${staffMember.firstName} ${staffMember.lastName}`,
-      htmlContent: getEmailTemplate(adminContent, 'Quote Assigned'),
-      senderEmail: SENDER_EMAIL,
-      senderName: SENDER_NAME,
-    });
+    // Send to admin and all staff members
+    await sendEmailToAdminAndStaff(
+      {},
+      getEmailTemplate(adminContent, 'Quote Assigned'),
+      `Quote Assigned - ${quote.fullName} to ${staffMember.firstName} ${staffMember.lastName}`
+    );
 
     console.log('✓ Quote assigned emails sent successfully');
   } catch (error) {
@@ -713,14 +757,12 @@ export const sendQuoteEditedEmail = async (quote, changedFields = {}) => {
       senderName: SENDER_NAME,
     });
 
-    // Send to admin
-    await sendEmailViaBrevo({
-      to: ADMIN_EMAIL,
-      subject: `Quote Edited - ${quote.fullName} (${quote.trackingNumber})`,
-      htmlContent: getEmailTemplate(adminContent, 'Quote Edited'),
-      senderEmail: SENDER_EMAIL,
-      senderName: SENDER_NAME,
-    });
+    // Send to admin and all staff members
+    await sendEmailToAdminAndStaff(
+      {},
+      getEmailTemplate(adminContent, 'Quote Edited'),
+      `Quote Edited - ${quote.fullName} (${quote.trackingNumber})`
+    );
 
     console.log('✓ Quote edited emails sent successfully');
   } catch (error) {

@@ -19,7 +19,25 @@ export const authenticate = async (req, callback) => {
       );
     }
 
-    const decoded = jwt.verify(token, JWT_SECRET);
+    let decoded;
+    try {
+      decoded = jwt.verify(token, JWT_SECRET);
+    } catch (error) {
+      if (error.name === 'TokenExpiredError') {
+        return NextResponse.json(
+          { success: false, message: "Token expired. Please login again.", code: 'TOKEN_EXPIRED' },
+          { status: 401 }
+        );
+      }
+      if (error.name === 'JsonWebTokenError') {
+        return NextResponse.json(
+          { success: false, message: "Invalid token. Please login again.", code: 'INVALID_TOKEN' },
+          { status: 401 }
+        );
+      }
+      throw error;
+    }
+
     await connectDB();
 
     const user = await User.findById(decoded.id);

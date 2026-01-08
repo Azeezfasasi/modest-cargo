@@ -147,7 +147,7 @@ const ManageBlogPage = () => {
 				<h2 className="text-xl md:text-2xl font-bold text-gray-900">Manage Blog Posts</h2>
 				<Link
 					href="/dashboard/add-blog"
-					className="inline-flex items-center justify-center px-4 py-2 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 transition-colors whitespace-nowrap"
+					className="inline-flex items-center justify-center px-4 py-2 bg-red-700 text-white font-medium rounded-lg hover:bg-red-800 transition-colors whitespace-nowrap"
 				>
 					+ Create New Post
 				</Link>
@@ -165,7 +165,7 @@ const ManageBlogPage = () => {
 								placeholder="Search posts..."
 								value={searchQuery}
 								onChange={(e) => setSearchQuery(e.target.value)}
-								className="w-full pl-10 pr-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
+								className="w-full pl-10 pr-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-transparent transition"
 							/>
 							<Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
 						</div>
@@ -177,7 +177,7 @@ const ManageBlogPage = () => {
 						<select
 							value={statusFilter}
 							onChange={(e) => setStatusFilter(e.target.value)}
-							className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
+							className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-transparent transition"
 						>
 							<option value="all">All Status</option>
 							<option value="published">Published</option>
@@ -191,7 +191,7 @@ const ManageBlogPage = () => {
 						<select
 							value={authorFilter}
 							onChange={(e) => setAuthorFilter(e.target.value)}
-							className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
+							className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-transparent transition"
 						>
 							<option value="all">All Authors</option>
 							{authors.map((author) => (
@@ -208,7 +208,7 @@ const ManageBlogPage = () => {
 						<select
 							value={sortBy}
 							onChange={(e) => setSortBy(e.target.value)}
-							className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
+							className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-transparent transition"
 						>
 							<option value="date-desc">Newest First</option>
 							<option value="date-asc">Oldest First</option>
@@ -414,7 +414,7 @@ const ManageBlogPage = () => {
 											onClick={() => setCurrentPage(page)}
 											className={`px-3 py-2 text-sm rounded-lg transition-colors ${
 												currentPage === page
-													? 'bg-indigo-600 text-white'
+													? 'bg-red-700 text-white'
 													: 'border border-gray-300 hover:bg-gray-50'
 											}`}
 										>

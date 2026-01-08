@@ -72,8 +72,12 @@ export const sendEmailViaBrevo = async (emailData) => {
       subject,
       htmlContent: htmlContent || '',
       textContent: textContent || subject, // ← Fallback to subject if textContent is empty (required by Brevo)
-      tags: tags || [],
     };
+
+    // Only add tags if they exist and are not empty
+    if (tags && Array.isArray(tags) && tags.length > 0) {
+      emailPayload.tags = tags;
+    }
 
     // Add optional fields
     if (cc.length > 0) {
@@ -107,11 +111,24 @@ export const sendEmailViaBrevo = async (emailData) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(emailPayload),
+      signal: AbortSignal.timeout(30000), // 30 second timeout
     });
 
     return handleBrevoResponse(response);
   } catch (error) {
     console.error('❌ Brevo email send error:', error);
+    
+    // Check if it's a network error
+    if (error.name === 'AbortError' || error.message?.includes('timeout')) {
+      console.error('⚠️  Email send timed out - check network connectivity to api.brevo.com');
+      throw new Error(`Email delivery delayed: ${error.message}`);
+    }
+    
+    if (error.code === 'ENOTFOUND' || error.code === 'ECONNREFUSED') {
+      console.error('⚠️  Cannot reach Brevo API - check internet connection or firewall settings');
+      throw new Error(`Cannot connect to Brevo: ${error.message}`);
+    }
+    
     throw new Error(`Failed to send email via Brevo: ${error.message}`);
   }
 };

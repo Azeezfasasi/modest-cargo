@@ -32,8 +32,13 @@ export const createQuote = async (req) => {
     const quote = new Quote({ ...body, trackingNumber });
     await quote.save();
     
-    // Send email notification
-    sendQuoteCreatedEmail(quote);
+    // Send email notification (non-blocking)
+    try {
+      await sendQuoteCreatedEmail(quote);
+    } catch (emailError) {
+      console.error('Email notification failed for quote creation:', emailError.message);
+      // Don't fail the request, just log the error
+    }
     
     return NextResponse.json({ success: true, quote }, { status: 201 });
   } catch (error) {
@@ -72,9 +77,14 @@ export const updateQuote = async (req, quoteId) => {
       }
     });
     
-    // Send email notification if there are changes
+    // Send email notification if there are changes (non-blocking)
     if (Object.keys(changedFields).length > 0) {
-      sendQuoteEditedEmail(quote, changedFields);
+      try {
+        await sendQuoteEditedEmail(quote, changedFields);
+      } catch (emailError) {
+        console.error('Email notification failed for quote edit:', emailError.message);
+        // Don't fail the request, just log the error
+      }
     }
     
     return NextResponse.json({ success: true, quote }, { status: 200 });
@@ -90,8 +100,13 @@ export const deleteQuote = async (req, quoteId) => {
     const quote = await Quote.findByIdAndDelete(quoteId);
     if (!quote) return NextResponse.json({ success: false, message: "Quote not found" }, { status: 404 });
     
-    // Send email notification
-    sendQuoteDeletedEmail(quote);
+    // Send email notification (non-blocking)
+    try {
+      await sendQuoteDeletedEmail(quote);
+    } catch (emailError) {
+      console.error('Email notification failed for quote deletion:', emailError.message);
+      // Don't fail the request, just log the error
+    }
     
     return NextResponse.json({ success: true, message: "Quote deleted" }, { status: 200 });
   } catch (error) {
@@ -114,8 +129,13 @@ export const changeQuoteStatus = async (body, quoteId) => {
     quote.status = status;
     await quote.save();
     
-    // Send email notification
-    sendQuoteStatusChangedEmail(quote, oldStatus, status);
+    // Send email notification (non-blocking)
+    try {
+      await sendQuoteStatusChangedEmail(quote, oldStatus, status);
+    } catch (emailError) {
+      console.error('Email notification failed for status change:', emailError.message);
+      // Don't fail the request, just log the error
+    }
     
     return NextResponse.json({ success: true, quote }, { status: 200 });
   } catch (error) {
@@ -143,9 +163,14 @@ export const replyToQuote = async (body, quoteId) => {
     quote.status = "quoted";
     await quote.save();
     
-    // Send email notification
+    // Send email notification (non-blocking)
     const senderName = `${sender.firstName} ${sender.lastName}`;
-    sendQuoteReplyEmail(quote, { message }, senderName);
+    try {
+      await sendQuoteReplyEmail(quote, { message }, senderName);
+    } catch (emailError) {
+      console.error('Email notification failed for quote reply:', emailError.message);
+      // Don't fail the request, just log the error
+    }
     
     return NextResponse.json({ success: true, quote }, { status: 200 });
   } catch (error) {
@@ -172,9 +197,14 @@ export const assignQuote = async (body, quoteId) => {
     // Populate the assignedTo field to return user details
     await quote.populate('assignedTo', 'firstName lastName email role');
     
-    // Send email notification to assigned staff member
+    // Send email notification to assigned staff member (non-blocking)
     const assignedStaff = quote.assignedTo;
-    sendQuoteAssignedEmail(quote, assignedStaff);
+    try {
+      await sendQuoteAssignedEmail(quote, assignedStaff);
+    } catch (emailError) {
+      console.error('Email notification failed for quote assignment:', emailError.message);
+      // Don't fail the request, just log the error
+    }
     
     return NextResponse.json({ success: true, quote, message: `Quote assigned to ${quote.assignedTo?.firstName || 'user'}` }, { status: 200 });
   } catch (error) {

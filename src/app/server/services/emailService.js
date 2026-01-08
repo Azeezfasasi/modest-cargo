@@ -4,7 +4,7 @@ import User from '../models/User';
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL || process.env.ADMIN_NOTIFICATION_EMAIL || 'admin@modestcargo.com';
 const SENDER_EMAIL = process.env.BREVO_SENDER_EMAIL || process.env.NEWSLETTER_FROM_EMAIL || 'noreply@modestcargo.com';
 const SENDER_NAME = process.env.BREVO_SENDER_NAME || process.env.NEWSLETTER_FROM_NAME || 'Modest Cargo';
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://modest-cargo.vercel.app';
 
 /**
  * Get all staff members and admin emails

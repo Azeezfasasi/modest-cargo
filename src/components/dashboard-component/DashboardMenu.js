@@ -65,6 +65,7 @@ export default function DashboardMenu({ collapsed, mobileOpen = false, onClose =
         { href: '/dashboard/delivered-shipments', label: 'Delivered Shipments', roles: ['admin', 'staff-member'] },
         { href: '/dashboard/create-shipment', label: 'Create Shipments', roles: ['admin', 'staff-member'] },
         { href: '/dashboard/shipment-status', label: 'Shipment Status', roles: ['admin', 'staff-member'] },
+        { href: '/dashboard/manage-pricing', label: 'Manage Shipping Rates', roles: ['admin', 'staff-member'] },
       ]
     },
     { href: '/blog', label: 'View Blogs', icon: 'dashboard', roles: ['client'] },

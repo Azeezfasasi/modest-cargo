@@ -305,7 +305,7 @@ function EditBlogContent() {
 								onChange={handleInputChange}
 								required
 								className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none"
-								placeholder="e.g., Getting Started with Next.js"
+								placeholder="e.g.,Tips for Cargo Shipment"
 							/>
 							<p className="text-xs text-gray-500 mt-1">This will appear as the main headline</p>
 						</div>

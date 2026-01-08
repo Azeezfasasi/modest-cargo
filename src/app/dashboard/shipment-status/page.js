@@ -143,7 +143,7 @@ export default function ShipmentStatus() {
   return (
     <div className="bg-gray-50 py-2 md:py-8 px-0 sm:px-6 lg:px-8 mx-auto">
       <div className="w-[330px] md:w-full md:max-w-7xl mx-auto">
-        <div className="flex justify-between items-center mb-6">
+        <div className="flex flex-col md:flex-row gap-6 md:gap-0 justify-between items-center mb-6">
           <h1 className="text-2xl md:text-3xl font-bold text-gray-900">Shipment Statuses</h1>
           <button
             onClick={() => handleOpenModal()}

@@ -97,7 +97,7 @@ export default function MainHeader() {
           {/* Logo */}
           <div className="flex items-center gap-3 p-1">
             <Link href="/" className="flex items-center gap-3">
-              <Image src="/images/modestlogo.png" alt="Modest Cargo Logo" width={170} height={50} className="w-[70px] md:w-[180px] block rounded-md" />
+              <Image src="/images/modestlogo.png" alt="Modest Cargo Logo" width={170} height={50} className="w-[160px] md:w-[180px] block rounded-md" />
             </Link>
           </div>
 
@@ -107,7 +107,7 @@ export default function MainHeader() {
               if (l.label === 'About Us') {
                 const submenu = [
                   { href: '/about-us', label: 'About Us' },
-                  // { href: '/destinations', label: 'Destinations' },
+                  { href: '/pricing', label: 'Pricing' },
                   { href: '/blog', label: 'Blog' },
                   { href: '/gallery', label: 'Gallery' },
                   { href: '/careers', label: 'Careers' }
@@ -258,7 +258,7 @@ export default function MainHeader() {
                 if (l.label === 'About Us') {
                   const submenu = [
                     { href: '/about-us', label: 'About Us' },
-                    // { href: '/destinations', label: 'Destinations' },
+                    { href: '/pricing', label: 'Pricing' },
                     { href: '/blog', label: 'Blog' },
                     { href: '/gallery', label: 'Gallery' },
                     { href: '/careers', label: 'Careers' },

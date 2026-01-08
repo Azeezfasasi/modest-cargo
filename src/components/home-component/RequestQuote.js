@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Loader, ChevronRight, ChevronLeft, User, MapPin, Package, MessageSquare, CheckCircle } from "lucide-react";
+import { Loader, ChevronRight, ChevronLeft, User, MapPin, Package, MessageSquare, CheckCircle, X } from "lucide-react";
 import toast from "react-hot-toast";
 
 export default function RequestQuote() {
@@ -24,6 +24,8 @@ export default function RequestQuote() {
 
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [trackingNumber, setTrackingNumber] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -91,13 +93,11 @@ export default function RequestQuote() {
       });
       const data = await res.json();
       if (data.success) {
-        const trackingNumber = data.quote?.trackingNumber || "PENDING";
-        toast.success(
-          <div className="flex flex-col gap-1">
-            <span>Quote request submitted successfully!</span>
-            <span className="font-mono text-sm">Tracking: {trackingNumber}</span>
-          </div>
-        );
+        const trackingNum = data.quote?.trackingNumber || "PENDING";
+        setTrackingNumber(trackingNum);
+        setShowSuccessModal(true);
+        
+        // Reset form
         setCurrentStep(1);
         setFormData({
           fullName: "",
@@ -502,6 +502,60 @@ export default function RequestQuote() {
         </div>
       </div>
 
+      {/* Success Modal */}
+      {showSuccessModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 animate-scale-in">
+            {/* Close Button */}
+            <button
+              onClick={() => setShowSuccessModal(false)}
+              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition"
+            >
+              <X className="w-6 h-6" />
+            </button>
+
+            {/* Success Icon */}
+            <div className="flex justify-center mb-6">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
+                <CheckCircle className="w-10 h-10 text-green-600" />
+              </div>
+            </div>
+
+            {/* Content */}
+            <h2 className="text-2xl font-bold text-gray-900 text-center mb-4">
+              Quote Request Submitted!
+            </h2>
+
+            <p className="text-gray-600 text-center mb-6">
+              Thank you for your quote request. We've received your information and our team is reviewing it.
+            </p>
+
+            {/* Tracking Number Section */}
+            <div className="bg-gradient-to-r from-red-50 to-orange-50 rounded-lg p-4 mb-6 border border-red-200">
+              <p className="text-sm text-gray-600 mb-2">Your Tracking Number</p>
+              <p className="font-mono font-bold text-lg text-red-600 text-center">
+                {trackingNumber}
+              </p>
+            </div>
+
+            {/* Follow-up Message */}
+            <div className="bg-blue-50 rounded-lg p-4 mb-6 border border-blue-200">
+              <p className="text-sm text-gray-700 text-center">
+                <span className="font-semibold text-amber-600">One of our experienced team members</span> will get in touch with you shortly to discuss your shipment requirements and provide a detailed quote.
+              </p>
+            </div>
+
+            {/* Close Button */}
+            <button
+              onClick={() => setShowSuccessModal(false)}
+              className="w-full bg-gradient-to-r from-red-600 to-red-700 text-white font-semibold py-3 rounded-lg hover:shadow-lg transition-all"
+            >
+              Got It
+            </button>
+          </div>
+        </div>
+      )}
+
       <style jsx>{`
         @keyframes fadeIn {
           from {
@@ -516,6 +570,21 @@ export default function RequestQuote() {
 
         .animate-fade-in {
           animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes scaleIn {
+          from {
+            opacity: 0;
+            transform: scale(0.95);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+
+        .animate-scale-in {
+          animation: scaleIn 0.3s ease-in-out;
         }
       `}</style>
     </section>

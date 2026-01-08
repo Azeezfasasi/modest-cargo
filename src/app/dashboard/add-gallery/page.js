@@ -132,10 +132,10 @@ export default function AddGalleryPage() {
 
   return (
     <ProtectedRoute allowedRoles={['admin', 'staff-member']}>
-    <div className="min-h-screen bg-gray-50 py-6 sm:py-8 mx-auto">
-      <div className="max-w-2xl mx-auto px-3 sm:px-4">
-        <div className="bg-white rounded-lg shadow-md p-4 sm:p-8">
-          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8">Add New Gallery</h1>
+    <div className="min-h-screen bg-gray-50 py-4 sm:py-6 md:py-8 mx-auto">
+      <div className="max-w-2xl mx-auto px-3 sm:px-4 md:px-6">
+        <div className="bg-white rounded-lg shadow-md p-5 sm:p-6 md:p-8">
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-5 sm:mb-6 md:mb-8">Add New Gallery</h1>
 
           {error && (
             <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">
@@ -284,13 +284,13 @@ export default function AddGalleryPage() {
 
             {/* Image Upload */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-2">
                 Images * (At least 1 required)
               </label>
-              <div className="border-2 border-dashed border-gray-300 rounded-lg p-4 sm:p-6">
+              <div className="border-2 border-dashed border-gray-300 rounded-lg p-3 sm:p-4 md:p-6">
                 <div className="text-center">
-                  <Upload className="mx-auto h-12 w-12 text-gray-400 mb-2" />
-                  <p className="text-sm text-gray-600 mb-2">
+                  <Upload className="mx-auto h-10 sm:h-12 w-10 sm:w-12 text-gray-400 mb-2" />
+                  <p className="text-xs sm:text-sm text-gray-600 mb-2">
                     Drag and drop your images here, or click to select
                   </p>
                   <input
@@ -316,10 +316,10 @@ export default function AddGalleryPage() {
             {/* Uploaded Images Preview */}
             {formData.images.length > 0 && (
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-3">
                   Uploaded Images ({formData.images.length})
                 </label>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3 md:gap-4">
                   {formData.images.map((img, index) => (
                     <div key={index} className="relative group">
                       <Image
@@ -336,7 +336,7 @@ export default function AddGalleryPage() {
                       >
                         <X className="h-3 w-3 sm:h-4 sm:w-4" />
                       </button>
-                      <p className="text-xs text-gray-600 mt-1">
+                      <p className="text-xs text-gray-600 mt-1 text-center">
                         {img.displayOrder + 1}/{formData.images.length}
                       </p>
                     </div>
@@ -346,11 +346,11 @@ export default function AddGalleryPage() {
             )}
 
             {/* Submit Button */}
-            <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 pt-4 sm:pt-6">
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 md:gap-4 pt-4 sm:pt-6">
               <button
                 type="submit"
                 disabled={loading || uploading || formData.images.length === 0}
-                className="flex-1 bg-blue-600 text-white py-2.5 px-4 text-sm sm:text-base rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition-colors"
+                className="flex-1 bg-blue-600 text-white py-3 sm:py-2.5 px-4 text-xs sm:text-sm md:text-base rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition-colors"
               >
                 {loading ? (
                   <span className="flex items-center justify-center gap-2">
@@ -364,7 +364,7 @@ export default function AddGalleryPage() {
               <button
                 type="button"
                 onClick={() => router.back()}
-                className="flex-1 bg-gray-300 text-gray-800 py-2.5 px-4 text-sm sm:text-base rounded-lg font-medium hover:bg-gray-400 transition-colors"
+                className="flex-1 bg-gray-300 text-gray-800 py-3 sm:py-2.5 px-4 text-xs sm:text-sm md:text-base rounded-lg font-medium hover:bg-gray-400 transition-colors"
               >
                 Cancel
               </button>

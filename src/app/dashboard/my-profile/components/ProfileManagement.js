@@ -385,7 +385,7 @@ export default function ProfileManagement() {
                     onChange={handleProfileChange}
                     disabled={profileLoading}
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition disabled:bg-gray-100"
-                    placeholder="+1 (555) 000-0000"
+                    placeholder="+1 ********"
                   />
                 </div>
 
@@ -415,7 +415,7 @@ export default function ProfileManagement() {
                     onChange={handleProfileChange}
                     disabled={profileLoading}
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition disabled:bg-gray-100"
-                    placeholder="Engineering"
+                    placeholder="You role's department"
                   />
                 </div>
 
@@ -430,7 +430,7 @@ export default function ProfileManagement() {
                     onChange={handleProfileChange}
                     disabled={profileLoading}
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition disabled:bg-gray-100"
-                    placeholder="Senior Engineer"
+                    placeholder="Your position or title"
                   />
                 </div>
               </div>

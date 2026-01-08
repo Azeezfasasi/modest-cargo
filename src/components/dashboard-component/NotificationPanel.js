@@ -73,7 +73,7 @@ export default function NotificationPanel() {
       <button
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Notifications"
-        className="relative p-2 rounded-md text-gray-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-700 transition-colors"
+        className="relative p-2 rounded-md text-gray-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-700 transition-colors z-40"
       >
         <Bell className="w-5 h-5" />
 
@@ -85,9 +85,18 @@ export default function NotificationPanel() {
         )}
       </button>
 
+      {/* Mobile Backdrop */}
+      {isOpen && (
+        <div 
+          className="fixed inset-0 bg-black/0 sm:bg-transparent z-40"
+          onClick={() => setIsOpen(false)}
+          aria-hidden="true"
+        />
+      )}
+
       {/* Notification Panel */}
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-96 bg-white border border-gray-200 rounded-lg shadow-xl z-50 max-h-[600px] overflow-hidden flex flex-col animate-fade-in md:w-80 sm:w-72">
+        <div className="fixed sm:absolute right-0 sm:right-0 left-0 sm:left-auto bottom-0 sm:bottom-auto top-auto sm:top-full mt-0 sm:mt-2 mx-0 sm:mx-0 w-full sm:w-96 bg-white border border-gray-200 rounded-t-2xl sm:rounded-lg shadow-xl z-50 max-h-[75vh] sm:max-h-[600px] overflow-hidden flex flex-col animate-fade-in md:w-80">
           {/* Header */}
           <div className="flex items-center justify-between px-4 py-3 bg-gradient-to-r from-red-600 to-red-700 text-white sticky top-0 z-10">
             <div className="flex items-center gap-2">

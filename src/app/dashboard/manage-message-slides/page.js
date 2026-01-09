@@ -128,7 +128,7 @@ export default function ManageMessageSlides() {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <div className="text-lg font-semibold text-gray-600">Loading...</div>
+        <div className="text-lg font-semibold text-red-600">Loading...</div>
       </div>
     )
   }
@@ -162,12 +162,12 @@ export default function ManageMessageSlides() {
               onChange={(e) => setNewMessage(e.target.value)}
               placeholder="Enter your message here (max 300 characters)"
               maxLength="300"
-              className="flex-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+              className="flex-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 resize-none"
               rows="2"
             />
             <button
               onClick={addMessage}
-              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors"
+              className="bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors"
             >
               Add
             </button>
@@ -201,13 +201,13 @@ export default function ManageMessageSlides() {
                       value={editingMessage}
                       onChange={(e) => setEditingMessage(e.target.value)}
                       maxLength="300"
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+                      className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 resize-none"
                       rows="2"
                     />
                     <div className="flex gap-3">
                       <button
                         onClick={() => updateMessage(msg._id)}
-                        className="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
+                        className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
                       >
                         Save
                       </button>
@@ -233,7 +233,7 @@ export default function ManageMessageSlides() {
                           setEditingId(msg._id)
                           setEditingMessage(msg.message)
                         }}
-                        className="text-blue-600 hover:text-blue-700 transition-colors"
+                        className="text-red-600 hover:text-red-700 transition-colors"
                         title="Edit message"
                       >
                         <Edit2 size={18} />

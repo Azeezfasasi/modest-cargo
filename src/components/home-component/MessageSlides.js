@@ -45,11 +45,11 @@ export default function MessageSlides() {
     // Set animation duration based on screen size
     const handleResize = () => {
       if (window.innerWidth < 480) {
-        setAnimationDuration('15s') // Mobile: slower
+        setAnimationDuration('10s') // Mobile: fastest
       } else if (window.innerWidth < 768) {
-        setAnimationDuration('18s') // Tablet: medium
+        setAnimationDuration('12s') // Tablet: medium
       } else {
-        setAnimationDuration('15s') // Desktop: faster
+        setAnimationDuration('15s') // Desktop: slower
       }
     }
 

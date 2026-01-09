@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import Image from 'next/image'
-import { LayoutDashboard, Briefcase, NotepadText, Contact, TableProperties, Users, Mails, Images } from 'lucide-react';
+import { LayoutDashboard, Briefcase, NotepadText, Contact, TableProperties, Users, Mails, Images, Truck, UserPen, House, Building } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext'
 
 function Icon({ name }) {
@@ -44,6 +44,22 @@ function Icon({ name }) {
     return (
       <Images className="w-5 h-5" />
     )
+    case 'Truck':
+    return (
+      <Truck className="w-5 h-5" />
+    )
+    case 'Profile':
+    return (
+      <UserPen className="w-5 h-5" />
+    )
+    case 'House':
+    return (
+      <House className="w-5 h-5" />
+    )
+    case 'Aboutus':
+    return (
+      <Building className="w-5 h-5" />
+    )
     default:
       return null
   }
@@ -57,7 +73,7 @@ export default function DashboardMenu({ collapsed, mobileOpen = false, onClose =
     {
       href: '/dashboard/shipments',
       label: 'Manage Shipment',
-      icon: 'Users',
+      icon: 'Truck',
       roles: ['admin', 'staff-member'],
       children: [
         { href: '/dashboard/quote-requests', label: 'All Shipments', roles: ['admin', 'staff-member'] },
@@ -68,8 +84,9 @@ export default function DashboardMenu({ collapsed, mobileOpen = false, onClose =
         { href: '/dashboard/manage-pricing', label: 'Manage Shipping Rates', roles: ['admin'] },
       ]
     },
-    { href: '/blog', label: 'View Blogs', icon: 'dashboard', roles: ['client'] },
+    { href: '/blog', label: 'View Blogs', icon: 'blog', roles: ['client'] },
     { href: '/dashboard/contact-form-responses', label: 'Contact Form Responses', icon: 'Contact', roles: ['admin', 'staff-member'] },
+    { href: '/track-shipment', label: 'Track Shipment', icon: 'Truck', roles: ['client'] },
     { href: '/request-a-quote', label: 'Request Quote', icon: 'dashboard', roles: ['client'] },
     {
       href: '/dashboard/all-newsletter',
@@ -103,7 +120,7 @@ export default function DashboardMenu({ collapsed, mobileOpen = false, onClose =
       ]
     },
     { href: '/gallery', label: 'Our Gallery', icon: 'projects', roles: ['client'] },
-    { href: '/dashboard/my-profile', label: 'Profile', icon: 'dashboard', roles: ['admin', 'client', 'staff-member'] },
+    { href: '/dashboard/my-profile', label: 'Profile', icon: 'Profile', roles: ['admin', 'client', 'staff-member'] },
     {
       href: '/dashboard/users',
       label: 'Manage Users',
@@ -118,7 +135,7 @@ export default function DashboardMenu({ collapsed, mobileOpen = false, onClose =
     {
       href: '/dashboard/home',
       label: 'Homepage Contents',
-      icon: 'Gallery',
+      icon: 'House',
       roles: ['admin'],
       children: [
         { href: '/dashboard/hero-slider', label: 'Hero Slider', roles: ['admin', 'staff-member'] },
@@ -131,7 +148,7 @@ export default function DashboardMenu({ collapsed, mobileOpen = false, onClose =
     {
       href: '/dashboard/about-page',
       label: 'About Page Contents',
-      icon: 'Gallery',
+      icon: 'Aboutus',
       roles: ['admin'],
       children: [
         { href: '/dashboard/company-overview', label: 'Company Overview', roles: ['admin', 'staff-member'] },

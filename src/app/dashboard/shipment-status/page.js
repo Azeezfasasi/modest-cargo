@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import { Plus, Edit2, Trash2, X } from 'lucide-react'
+import { useAuth } from '@/context/AuthContext'
 
 export default function ShipmentStatus() {
   const [statuses, setStatuses] = useState([])
@@ -10,6 +11,7 @@ export default function ShipmentStatus() {
   const [showDeleteModal, setShowDeleteModal] = useState(false)
   const [editingStatus, setEditingStatus] = useState(null)
   const [selectedStatus, setSelectedStatus] = useState(null)
+  const { user } = useAuth()
 
   const [formData, setFormData] = useState({
     name: '',
@@ -145,13 +147,15 @@ export default function ShipmentStatus() {
       <div className="w-[330px] md:w-full md:max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row gap-6 md:gap-0 justify-between items-center mb-6">
           <h1 className="text-2xl md:text-3xl font-bold text-gray-900">Shipment Statuses</h1>
-          <button
-            onClick={() => handleOpenModal()}
-            className="flex items-center gap-2 bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700 font-medium transition"
-          >
-            <Plus className="w-5 h-5" />
-            Add Status
-          </button>
+          {user?.role === 'admin' ? (
+            <button
+              onClick={() => handleOpenModal()}
+              className="flex items-center gap-2 bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700 font-medium transition"
+            >
+              <Plus className="w-5 h-5" />
+              Add Status
+            </button>
+          ) : null}
         </div>
 
         {/* Statuses Grid */}
@@ -190,6 +194,7 @@ export default function ShipmentStatus() {
                     <p className="text-sm text-gray-700 mb-3">{status.description}</p>
                   )}
 
+                  {user?.role === 'admin' ? (
                   <div className="flex gap-2">
                     <button
                       onClick={() => handleOpenModal(status)}
@@ -209,6 +214,7 @@ export default function ShipmentStatus() {
                       Delete
                     </button>
                   </div>
+                  ) : null}
                 </div>
               )
             })}

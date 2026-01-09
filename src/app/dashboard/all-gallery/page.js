@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { fetchGalleries, deleteGallery } from '@/app/utils/galleryApi';
 import { Plus, Edit, Trash2, Eye, Loader, Search } from 'lucide-react';
 import { ProtectedRoute } from '@/components/ProtectedRoute';
+import { useAuth } from '@/context/AuthContext';
 
 const CATEGORIES = ['logistics', 'shipping', 'warehousing', 'transportation', 'supply-chain', 'other'];
 
@@ -15,6 +16,7 @@ export default function AllGalleriesPage() {
   const [deleting, setDeleting] = useState(null);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const { user } = useAuth();
 
   const [filters, setFilters] = useState({
     category: '',
@@ -301,18 +303,20 @@ export default function AllGalleriesPage() {
                         <Edit className="h-4 w-4" />
                         Edit
                       </button>
-                      <button
-                        onClick={() => handleDeleteGallery(gallery._id, gallery.title)}
-                        disabled={deleting === gallery._id}
-                        className="flex-1 flex items-center justify-center gap-2 bg-red-50 text-red-600 py-2 rounded hover:bg-red-100 transition-colors text-sm font-medium disabled:opacity-50"
-                      >
-                        {deleting === gallery._id ? (
-                          <Loader className="h-4 w-4 animate-spin" />
-                        ) : (
-                          <Trash2 className="h-4 w-4" />
-                        )}
-                        Delete
-                      </button>
+                      {user?.role === 'admin' ? (
+                        <button
+                          onClick={() => handleDeleteGallery(gallery._id, gallery.title)}
+                          disabled={deleting === gallery._id}
+                          className="flex-1 flex items-center justify-center gap-2 bg-red-50 text-red-600 py-2 rounded hover:bg-red-100 transition-colors text-sm font-medium disabled:opacity-50"
+                        >
+                          {deleting === gallery._id ? (
+                            <Loader className="h-4 w-4 animate-spin" />
+                          ) : (
+                            <Trash2 className="h-4 w-4" />
+                          )}
+                          Delete
+                        </button>
+                      ) : null}
                     </div>
                   </div>
                 </div>

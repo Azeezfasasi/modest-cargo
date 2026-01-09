@@ -37,6 +37,12 @@ export default function Dashboard() {
           <ShipmentChart />
         </>
       ) : null}
+
+      {user?.role === 'admin' || user?.role === 'staff-member' ? (
+        <>
+          <ShipmentChart />
+        </>
+      ) : null}
     </>
   );
 }

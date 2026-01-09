@@ -5,6 +5,7 @@ import { Trash2, Eye, Reply, Search, Filter, ChevronLeft, ChevronRight, X } from
 // import { useAuth } from '../../../context/AuthContext';
 import { Commet } from "react-loading-indicators";
 import { ProtectedRoute } from '@/components/ProtectedRoute';
+import { useAuth } from '@/context/AuthContext';
 
 const ContactFormResponses = () => {
 		useEffect(() => {
@@ -46,6 +47,7 @@ const ContactFormResponses = () => {
 	const [replyEmail, setReplyEmail] = useState('')
 	const [newStatus, setNewStatus] = useState('')
 	const responsesPerPage = 10;
+	const { user } = useAuth();
 	// If you use AuthContext, import and use it here:
 	// import { useAuth } from '../../../context/AuthContext';
 	// const { user } = useAuth();
@@ -448,6 +450,7 @@ const ContactFormResponses = () => {
 																			</div>
 																		</div>
 																	)}
+													{user?.role === 'admin' ? (
 													<button
 														onClick={() => {
 															setSelectedResponse(response)
@@ -458,6 +461,7 @@ const ContactFormResponses = () => {
 													>
 														<Trash2 className="w-4 h-4" />
 													</button>
+													) : null}
 												</div>
 											</td>
 										</tr>

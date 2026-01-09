@@ -546,6 +546,7 @@ const ManageQuoteRequests = () => {
 													>
 														<FileText className="w-4 h-4" />
 													</button>
+													{user?.role === 'admin' ? (
 													<button
 														onClick={() => {
 															setSelectedRequest(request)
@@ -555,7 +556,8 @@ const ManageQuoteRequests = () => {
 														title="Delete"
 													>
 														<Trash2 className="w-4 h-4" />
-													</button>
+														</button>
+													) : null}
 												</div>
 											</td>
 										</tr>

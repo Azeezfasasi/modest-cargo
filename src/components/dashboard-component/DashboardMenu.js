@@ -58,14 +58,14 @@ export default function DashboardMenu({ collapsed, mobileOpen = false, onClose =
       href: '/dashboard/shipments',
       label: 'Manage Shipment',
       icon: 'Users',
-      roles: ['admin'],
+      roles: ['admin', 'staff-member'],
       children: [
         { href: '/dashboard/quote-requests', label: 'All Shipments', roles: ['admin', 'staff-member'] },
         { href: '/dashboard/my-assigned-quotes', label: 'My Assigned Shipments', roles: ['admin', 'staff-member'] },
         { href: '/dashboard/delivered-shipments', label: 'Delivered Shipments', roles: ['admin', 'staff-member'] },
         { href: '/dashboard/create-shipment', label: 'Create Shipments', roles: ['admin', 'staff-member'] },
-        { href: '/dashboard/shipment-status', label: 'Shipment Status', roles: ['admin', 'staff-member'] },
-        { href: '/dashboard/manage-pricing', label: 'Manage Shipping Rates', roles: ['admin', 'staff-member'] },
+        { href: '/dashboard/shipment-status', label: 'Shipment Status', roles: ['admin'] },
+        { href: '/dashboard/manage-pricing', label: 'Manage Shipping Rates', roles: ['admin'] },
       ]
     },
     { href: '/blog', label: 'View Blogs', icon: 'dashboard', roles: ['client'] },
@@ -75,7 +75,7 @@ export default function DashboardMenu({ collapsed, mobileOpen = false, onClose =
       href: '/dashboard/all-newsletter',
       label: 'Newsletter Management',
       icon: 'Newsletter',
-      roles: ['admin', 'staff-member'],
+      roles: ['admin'],
       children: [
         { href: '/dashboard/send-newsletter', label: 'Send Newsletter', roles: ['admin', 'staff-member'] },
         { href: '/dashboard/all-newsletters', label: 'All Newsletters', roles: ['admin', 'staff-member'] },
@@ -105,19 +105,6 @@ export default function DashboardMenu({ collapsed, mobileOpen = false, onClose =
     { href: '/gallery', label: 'Our Gallery', icon: 'projects', roles: ['client'] },
     { href: '/dashboard/my-profile', label: 'Profile', icon: 'dashboard', roles: ['admin', 'client', 'staff-member'] },
     {
-      href: '/dashboard/home',
-      label: 'Homepage Contents',
-      icon: 'Gallery',
-      roles: ['admin', 'staff-member'],
-      children: [
-        { href: '/dashboard/hero-slider', label: 'Hero Slider', roles: ['admin', 'staff-member'] },
-        { href: '/dashboard/home-cta', label: 'Home CTA', roles: ['admin', 'staff-member'] },
-        { href: '/dashboard/our-services-contents', label: 'Our Services', roles: ['admin', 'staff-member'] },
-        { href: '/dashboard/our-clients', label: 'Our Clients & Partners', roles: ['admin', 'staff-member'] },
-        { href: '/dashboard/testimonials', label: 'Testimonials', roles: ['admin', 'staff-member'] },
-      ]
-    },
-    {
       href: '/dashboard/users',
       label: 'Manage Users',
       icon: 'Users',
@@ -129,10 +116,23 @@ export default function DashboardMenu({ collapsed, mobileOpen = false, onClose =
       ]
     },
     {
+      href: '/dashboard/home',
+      label: 'Homepage Contents',
+      icon: 'Gallery',
+      roles: ['admin'],
+      children: [
+        { href: '/dashboard/hero-slider', label: 'Hero Slider', roles: ['admin', 'staff-member'] },
+        { href: '/dashboard/home-cta', label: 'Home CTA', roles: ['admin', 'staff-member'] },
+        { href: '/dashboard/our-services-contents', label: 'Our Services', roles: ['admin', 'staff-member'] },
+        { href: '/dashboard/our-clients', label: 'Our Clients & Partners', roles: ['admin', 'staff-member'] },
+        { href: '/dashboard/testimonials', label: 'Testimonials', roles: ['admin', 'staff-member'] },
+      ]
+    },
+    {
       href: '/dashboard/about-page',
       label: 'About Page Contents',
       icon: 'Gallery',
-      roles: ['admin', 'staff-member'],
+      roles: ['admin'],
       children: [
         { href: '/dashboard/company-overview', label: 'Company Overview', roles: ['admin', 'staff-member'] },
         { href: '/dashboard/history-milestones', label: 'History & Milestones', roles: ['admin', 'staff-member'] },

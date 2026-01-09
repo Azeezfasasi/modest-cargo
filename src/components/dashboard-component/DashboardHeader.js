@@ -65,7 +65,9 @@ export default function DashboardHeader({ onToggleSidebar, onToggleMobileMenu })
 
           <div className="flex items-center gap-4">
             {/* Notifications Panel Component */}
-            <NotificationPanel />
+            {user?.role === 'admin' || user?.role === 'staff-member' ? (
+              <NotificationPanel />
+            ) : null}
 
             <div className="relative" ref={dropdownRef}>
               <button

@@ -1,0 +1,77 @@
+.marquee-container {
+  width: 100%;
+  overflow: hidden;
+  background: linear-gradient(90deg, rgba(37, 99, 235, 1) 0%, rgba(59, 130, 246, 1) 50%, rgba(29, 78, 216, 1) 100%);
+}
+
+.marquee-content {
+  display: flex;
+  animation: scroll 40s linear infinite;
+  white-space: nowrap;
+  padding: 0;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 3rem;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.marquee-item::after {
+  content: '•';
+  margin-left: 3rem;
+  margin-right: 3rem;
+  opacity: 0.7;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .marquee-item {
+    padding: 0 1.5rem;
+    font-size: 0.875rem;
+  }
+
+  .marquee-item::after {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+  }
+
+  .marquee-content {
+    animation: scroll 50s linear infinite;
+  }
+}
+
+@media (max-width: 480px) {
+  .marquee-item {
+    padding: 0 1rem;
+    font-size: 0.75rem;
+  }
+
+  .marquee-item::after {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  .marquee-content {
+    animation: scroll 60s linear infinite;
+  }
+}
+
+/* Pause animation on hover for better UX */
+.marquee-container:hover .marquee-content {
+  animation-play-state: paused;
+}

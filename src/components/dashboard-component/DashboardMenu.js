@@ -139,6 +139,7 @@ export default function DashboardMenu({ collapsed, mobileOpen = false, onClose =
       roles: ['admin'],
       children: [
         { href: '/dashboard/hero-slider', label: 'Hero Slider', roles: ['admin', 'staff-member'] },
+        { href: '/dashboard/manage-message-slides', label: 'Manage Message Slides', roles: ['admin', 'staff-member'] },
         { href: '/dashboard/home-cta', label: 'Home CTA', roles: ['admin', 'staff-member'] },
         { href: '/dashboard/our-services-contents', label: 'Our Services', roles: ['admin', 'staff-member'] },
         { href: '/dashboard/our-clients', label: 'Our Clients & Partners', roles: ['admin', 'staff-member'] },

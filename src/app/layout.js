@@ -3,6 +3,7 @@ import MainHeader from '@/components/home-component/MainHeader'
 import Footer from '@/components/home-component/Footer'
 import { AuthProvider } from "@/context/AuthContext";
 import { Toaster } from 'react-hot-toast';
+import MessageSlides from '@/components/home-component/MessageSlides';
 
 export const metadata = {
   title: 'Modest Cargo',
@@ -19,6 +20,7 @@ export default function RootLayout({ children }) {
       <body>
         <AuthProvider>
           <div className="site-main-header sticky top-0 z-50">
+            <MessageSlides />
             <MainHeader />
           </div>
           <main>{children}</main>

@@ -6,6 +6,7 @@ export default function MessageSlides() {
   const [isPaused, setIsPaused] = useState(false)
   const [messages, setMessages] = useState([])
   const [loading, setLoading] = useState(true)
+  const [animationDuration, setAnimationDuration] = useState('15s')
 
   useEffect(() => {
     const fetchMessages = async () => {
@@ -40,10 +41,25 @@ export default function MessageSlides() {
     }
 
     fetchMessages()
+
+    // Set animation duration based on screen size
+    const handleResize = () => {
+      if (window.innerWidth < 480) {
+        setAnimationDuration('15s') // Mobile: slower
+      } else if (window.innerWidth < 768) {
+        setAnimationDuration('18s') // Tablet: medium
+      } else {
+        setAnimationDuration('15s') // Desktop: faster
+      }
+    }
+
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
   }, [])
 
   const scrollStyle = {
-    animation: isPaused ? 'none' : 'scroll 15s linear infinite',
+    animation: isPaused ? 'none' : `scroll ${animationDuration} linear infinite`,
     display: 'flex',
   }
 

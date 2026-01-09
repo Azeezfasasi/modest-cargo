@@ -165,7 +165,7 @@ export default function HistoryMilestonesManager() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-96">
-        <Loader className="w-8 h-8 animate-spin text-blue-900" />
+        <Loader className="w-8 h-8 animate-spin text-red-600" />
       </div>
     );
   }
@@ -174,7 +174,7 @@ export default function HistoryMilestonesManager() {
     <div className="space-y-4">
       <button
         onClick={() => handleModalOpen()}
-        className="flex items-center gap-2 bg-blue-900 text-white px-4 py-2 rounded-lg hover:bg-blue-800"
+        className="flex items-center gap-2 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700"
       >
         <Plus className="w-4 h-4" /> Add Milestone
       </button>
@@ -196,7 +196,7 @@ export default function HistoryMilestonesManager() {
               <div className="flex items-center gap-2 mt-3">
                 <button
                   onClick={() => handleModalOpen(milestone)}
-                  className="flex items-center gap-1 bg-blue-500 text-white px-3 py-1 rounded text-sm hover:bg-blue-600"
+                  className="flex items-center gap-1 bg-red-500 text-white px-3 py-1 rounded text-sm hover:bg-red-600"
                 >
                   <Edit2 className="w-3 h-3" /> Edit
                 </button>
@@ -254,7 +254,7 @@ export default function HistoryMilestonesManager() {
                   type="text"
                   value={formData.year}
                   onChange={(e) => setFormData({ ...formData, year: e.target.value })}
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500"
                   placeholder="e.g., 2024"
                 />
               </div>
@@ -267,7 +267,7 @@ export default function HistoryMilestonesManager() {
                   type="text"
                   value={formData.title}
                   onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500"
                   placeholder="e.g., Company Founded"
                 />
               </div>
@@ -279,7 +279,7 @@ export default function HistoryMilestonesManager() {
                 <textarea
                   value={formData.description}
                   onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none h-24"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500 resize-none h-24"
                   placeholder="Enter milestone description"
                 />
               </div>
@@ -294,7 +294,7 @@ export default function HistoryMilestonesManager() {
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-blue-900 text-white rounded-lg hover:bg-blue-800"
+                  className="px-4 py-2 bg-red-900 text-white rounded-lg hover:bg-red-800"
                 >
                   {editingId ? 'Update' : 'Create'}
                 </button>

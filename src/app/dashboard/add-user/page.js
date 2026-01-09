@@ -7,7 +7,6 @@ const roles = [
   { value: "client", label: "Client" },
   { value: "admin", label: "Admin" },
   { value: "staff-member", label: "Staff Member" },
-  { value: "super-admin", label: "Super Admin" },
 ];
 
 export default function AddUserPage() {
@@ -77,7 +76,7 @@ export default function AddUserPage() {
             name="firstName"
             value={form.firstName}
             onChange={handleChange}
-            className="w-full border border-gray-50 px-3 py-2 rounded-lg ring-1 focus:ring-blue-300 outline-none"
+            className="w-full border border-red-50 px-3 py-2 rounded-lg ring-1 focus:ring-red-600 outline-none"
             required
           />
         </div>
@@ -88,7 +87,7 @@ export default function AddUserPage() {
             name="lastName"
             value={form.lastName}
             onChange={handleChange}
-            className="w-full border border-gray-50 px-3 py-2 rounded-lg ring-1 focus:ring-blue-300 outline-none"
+            className="w-full border border-red-50 px-3 py-2 rounded-lg ring-1 focus:ring-red-600 outline-none"
             required
           />
         </div>
@@ -99,7 +98,7 @@ export default function AddUserPage() {
             name="email"
             value={form.email}
             onChange={handleChange}
-            className="w-full border border-gray-50 px-3 py-2 rounded-lg ring-1 focus:ring-blue-300 outline-none"
+            className="w-full border border-red-50 px-3 py-2 rounded-lg ring-1 focus:ring-red-600 outline-none"
             required
           />
         </div>
@@ -111,7 +110,7 @@ export default function AddUserPage() {
               name="password"
               value={form.password}
               onChange={handleChange}
-              className="w-full border border-gray-50 px-3 py-2 rounded-lg ring-1 focus:ring-blue-300 outline-none"
+              className="w-full border border-red-50 px-3 py-2 rounded-lg ring-1 focus:ring-red-600 outline-none"
               required
             />
           </div>
@@ -122,7 +121,7 @@ export default function AddUserPage() {
               name="confirmPassword"
               value={form.confirmPassword}
               onChange={handleChange}
-              className="w-full border border-gray-50 px-3 py-2 rounded-lg ring-1 focus:ring-blue-300 outline-none"
+              className="w-full border border-red-50 px-3 py-2 rounded-lg ring-1 focus:ring-red-600 outline-none"
               required
             />
           </div>
@@ -133,7 +132,7 @@ export default function AddUserPage() {
             name="role"
             value={form.role}
             onChange={handleChange}
-            className="w-full border border-gray-50 px-3 py-2 rounded-lg ring-1 focus:ring-blue-300 outline-none"
+            className="w-full border border-red-50 px-3 py-2 rounded-lg ring-1 focus:ring-red-600 outline-none"
             required
           >
             {roles.map(r => (
@@ -145,7 +144,7 @@ export default function AddUserPage() {
         {success && <div className="text-green-600 font-medium">{success}</div>}
         <button
           type="submit"
-          className="w-full py-2 px-4 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 disabled:opacity-50"
+          className="w-full py-2 px-4 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 disabled:opacity-50"
           disabled={loading}
         >
           {loading ? "Creating..." : "Add User"}

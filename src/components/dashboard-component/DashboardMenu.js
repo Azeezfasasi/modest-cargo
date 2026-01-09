@@ -129,7 +129,7 @@ export default function DashboardMenu({ collapsed, mobileOpen = false, onClose =
       children: [
         { href: '/dashboard/all-users', label: 'All Users', roles: ['admin'] },
         { href: '/dashboard/add-user', label: 'Add User', roles: ['admin'] },
-        { href: '/dashboard/change-user-password', label: 'Change User Password', roles: ['admin'] }
+        // { href: '/dashboard/change-user-password', label: 'Change User Password', roles: ['admin'] }
       ]
     },
     {

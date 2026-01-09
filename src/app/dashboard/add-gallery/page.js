@@ -160,7 +160,7 @@ export default function AddGalleryPage() {
                 name="title"
                 value={formData.title}
                 onChange={handleInputChange}
-                className="w-full px-3 sm:px-4 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 sm:px-4 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-transparent"
                 placeholder="Gallery title"
               />
             </div>
@@ -175,7 +175,7 @@ export default function AddGalleryPage() {
                 value={formData.description}
                 onChange={handleInputChange}
                 rows="4"
-                className="w-full px-3 sm:px-4 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 sm:px-4 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-transparent"
                 placeholder="Gallery description"
               />
             </div>
@@ -189,7 +189,7 @@ export default function AddGalleryPage() {
                 name="category"
                 value={formData.category}
                 onChange={handleInputChange}
-                className="w-full px-3 sm:px-4 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 sm:px-4 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-transparent"
               >
                 {CATEGORIES.map(cat => (
                   <option key={cat} value={cat}>
@@ -210,7 +210,7 @@ export default function AddGalleryPage() {
                   name="businessName"
                   value={formData.businessName}
                   onChange={handleInputChange}
-                  className="w-full px-3 sm:px-4 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 sm:px-4 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-transparent"
                   placeholder="Business name"
                 />
               </div>
@@ -223,7 +223,7 @@ export default function AddGalleryPage() {
                   name="location"
                   value={formData.location}
                   onChange={handleInputChange}
-                  className="w-full px-3 sm:px-4 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 sm:px-4 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-transparent"
                   placeholder="Location"
                 />
               </div>
@@ -239,7 +239,7 @@ export default function AddGalleryPage() {
                   name="status"
                   value={formData.status}
                   onChange={handleInputChange}
-                  className="w-full px-3 sm:px-4 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 sm:px-4 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-transparent"
                 >
                   <option value="active">Active</option>
                   <option value="inactive">Inactive</option>
@@ -272,7 +272,7 @@ export default function AddGalleryPage() {
                     onClick={() => handleTagToggle(tag)}
                     className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
                       formData.tags.includes(tag)
-                        ? 'bg-blue-500 text-white'
+                        ? 'bg-red-600 text-white'
                         : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
                     }`}
                   >
@@ -299,7 +299,7 @@ export default function AddGalleryPage() {
                     accept="image/*"
                     onChange={handleImageUpload}
                     disabled={uploading}
-                    className="block mx-auto text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+                    className="block mx-auto text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-red-50 file:text-red-700 hover:file:bg-red-100"
                   />
                 </div>
               </div>
@@ -307,7 +307,7 @@ export default function AddGalleryPage() {
 
             {/* Upload Progress */}
             {uploading && (
-              <div className="flex items-center gap-2 text-blue-600">
+              <div className="flex items-center gap-2 text-red-600">
                 <Loader className="h-4 w-4 animate-spin" />
                 <span>Uploading images...</span>
               </div>
@@ -350,7 +350,7 @@ export default function AddGalleryPage() {
               <button
                 type="submit"
                 disabled={loading || uploading || formData.images.length === 0}
-                className="flex-1 bg-blue-600 text-white py-3 sm:py-2.5 px-4 text-xs sm:text-sm md:text-base rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition-colors"
+                className="flex-1 bg-red-600 text-white py-3 sm:py-2.5 px-4 text-xs sm:text-sm md:text-base rounded-lg font-medium hover:bg-red-700 disabled:bg-gray-400 transition-colors"
               >
                 {loading ? (
                   <span className="flex items-center justify-center gap-2">

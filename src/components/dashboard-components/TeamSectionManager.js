@@ -206,7 +206,7 @@ export default function TeamSectionManager() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-96">
-        <Loader className="w-8 h-8 animate-spin text-blue-900" />
+        <Loader className="w-8 h-8 animate-spin text-red-600" />
       </div>
     );
   }
@@ -215,7 +215,7 @@ export default function TeamSectionManager() {
     <div className="space-y-4">
       <button
         onClick={() => handleModalOpen()}
-        className="flex items-center gap-2 bg-blue-900 text-white px-4 py-2 rounded-lg hover:bg-blue-800"
+        className="flex items-center gap-2 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700"
       >
         <Plus className="w-4 h-4" /> Add Team Member
       </button>
@@ -244,7 +244,7 @@ export default function TeamSectionManager() {
               <div className="flex items-center gap-2 mt-3">
                 <button
                   onClick={() => handleModalOpen(member)}
-                  className="flex items-center gap-1 bg-blue-500 text-white px-3 py-1 rounded text-sm hover:bg-blue-600"
+                  className="flex items-center gap-1 bg-red-500 text-white px-3 py-1 rounded text-sm hover:bg-red-600"
                 >
                   <Edit2 className="w-3 h-3" /> Edit
                 </button>
@@ -302,7 +302,7 @@ export default function TeamSectionManager() {
                   type="text"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500"
                   placeholder="e.g., Engr. John Doe"
                 />
               </div>
@@ -315,7 +315,7 @@ export default function TeamSectionManager() {
                   type="text"
                   value={formData.position}
                   onChange={(e) => setFormData({ ...formData, position: e.target.value })}
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500"
                   placeholder="e.g., Lead Engineer"
                 />
               </div>
@@ -327,7 +327,7 @@ export default function TeamSectionManager() {
                 <textarea
                   value={formData.bio}
                   onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none h-20"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500 resize-none h-20"
                   placeholder="Enter member bio (optional)"
                 />
               </div>
@@ -341,7 +341,7 @@ export default function TeamSectionManager() {
                   accept="image/*"
                   onChange={handleFileChange}
                   disabled={uploading}
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500"
                 />
                 {formData.photo && (
                   <img
@@ -364,7 +364,7 @@ export default function TeamSectionManager() {
                 <button
                   type="submit"
                   disabled={uploading}
-                  className="px-4 py-2 bg-blue-900 text-white rounded-lg hover:bg-blue-800 disabled:opacity-50"
+                  className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:opacity-50"
                 >
                   {editingId ? 'Update' : 'Create'}
                 </button>

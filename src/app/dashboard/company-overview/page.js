@@ -246,7 +246,7 @@ export default function CompanyOverviewManager() {
     return (
       <ProtectedRoute allowedRoles={['admin', 'staff-member']}>
         <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-          <Loader className="w-8 h-8 animate-spin text-blue-600" />
+          <Loader className="w-8 h-8 animate-spin text-red-600" />
         </div>
       </ProtectedRoute>
     );
@@ -266,7 +266,7 @@ export default function CompanyOverviewManager() {
                 onClick={() => setActiveTab(tab)}
                 className={`px-4 py-2 rounded-lg font-medium transition ${
                   activeTab === tab
-                    ? 'bg-blue-600 text-white'
+                    ? 'bg-red-600 text-white'
                     : 'bg-white text-gray-700 border border-gray-200 hover:bg-gray-50'
                 }`}
               >
@@ -287,14 +287,14 @@ export default function CompanyOverviewManager() {
                   type="text"
                   value={companyInfoForm.title}
                   onChange={(e) => setCompanyInfoForm(prev => ({ ...prev, title: e.target.value }))}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
                 />
               </div>
 
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">Section Image</label>
                 <div className="space-y-3">
-                  <label className="flex items-center justify-center w-full px-4 py-3 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-blue-500 hover:bg-blue-50 transition">
+                  <label className="flex items-center justify-center w-full px-4 py-3 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-red-500 hover:bg-red-50 transition">
                     <span className="text-sm font-medium text-gray-700">
                       {uploading ? 'Uploading...' : 'Choose Image'}
                     </span>
@@ -323,7 +323,7 @@ export default function CompanyOverviewManager() {
                         value={para.text}
                         onChange={(e) => handleUpdateParagraph(idx, e.target.value)}
                         rows="3"
-                        className="flex-1 px-3 py-2 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-blue-500"
+                        className="flex-1 px-3 py-2 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-red-500"
                       />
                       <button onClick={() => handleDeleteParagraph(idx)} className="text-red-600 hover:text-red-700 pt-2">
                         <Trash2 className="w-4 h-4" />
@@ -333,7 +333,7 @@ export default function CompanyOverviewManager() {
                 </div>
               </div>
 
-              <button onClick={saveCompanyInfo} disabled={saving} className="w-full px-4 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium disabled:opacity-50 flex items-center justify-center gap-2">
+              <button onClick={saveCompanyInfo} disabled={saving} className="w-full px-4 py-2.5 bg-red-600 text-white rounded-lg hover:bg-red-700 font-medium disabled:opacity-50 flex items-center justify-center gap-2">
                 {saving && <Loader className="w-4 h-4 animate-spin" />}
                 Save Company Info
               </button>
@@ -349,7 +349,7 @@ export default function CompanyOverviewManager() {
                   type="text"
                   value={visionForm.title}
                   onChange={(e) => setVisionForm(prev => ({ ...prev, title: e.target.value }))}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
                 />
               </div>
 
@@ -359,11 +359,11 @@ export default function CompanyOverviewManager() {
                   value={visionForm.description}
                   onChange={(e) => setVisionForm(prev => ({ ...prev, description: e.target.value }))}
                   rows="5"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
                 />
               </div>
 
-              <button onClick={saveVision} disabled={saving} className="w-full px-4 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium disabled:opacity-50 flex items-center justify-center gap-2">
+              <button onClick={saveVision} disabled={saving} className="w-full px-4 py-2.5 bg-red-600 text-white rounded-lg hover:bg-red-700 font-medium disabled:opacity-50 flex items-center justify-center gap-2">
                 {saving && <Loader className="w-4 h-4 animate-spin" />}
                 Save Vision
               </button>
@@ -379,7 +379,7 @@ export default function CompanyOverviewManager() {
                   type="text"
                   value={missionForm.title}
                   onChange={(e) => setMissionForm(prev => ({ ...prev, title: e.target.value }))}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
                 />
               </div>
 
@@ -389,11 +389,11 @@ export default function CompanyOverviewManager() {
                   value={missionForm.description}
                   onChange={(e) => setMissionForm(prev => ({ ...prev, description: e.target.value }))}
                   rows="5"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
                 />
               </div>
 
-              <button onClick={saveMission} disabled={saving} className="w-full px-4 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium disabled:opacity-50 flex items-center justify-center gap-2">
+              <button onClick={saveMission} disabled={saving} className="w-full px-4 py-2.5 bg-red-600 text-white rounded-lg hover:bg-red-700 font-medium disabled:opacity-50 flex items-center justify-center gap-2">
                 {saving && <Loader className="w-4 h-4 animate-spin" />}
                 Save Mission
               </button>
@@ -414,7 +414,7 @@ export default function CompanyOverviewManager() {
                     value={newValue.name}
                     onChange={(e) => setNewValue(prev => ({ ...prev, name: e.target.value }))}
                     placeholder="e.g., Excellence"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
                   />
                 </div>
 
@@ -425,7 +425,7 @@ export default function CompanyOverviewManager() {
                     onChange={(e) => setNewValue(prev => ({ ...prev, description: e.target.value }))}
                     placeholder="Brief description of this value"
                     rows="3"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
                   />
                 </div>
 
@@ -497,7 +497,7 @@ export default function CompanyOverviewManager() {
                         <p className="text-sm text-gray-600">{value.description}</p>
                       </div>
                       <div className="flex gap-2">
-                        <button onClick={() => handleEditCoreValue(idx)} className="text-blue-600 hover:text-blue-700">
+                        <button onClick={() => handleEditCoreValue(idx)} className="text-green-600 hover:text-green-700">
                           <Edit2 className="w-4 h-4" />
                         </button>
                         <button onClick={() => handleDeleteCoreValue(idx)} className="text-red-600 hover:text-red-700">
@@ -509,7 +509,7 @@ export default function CompanyOverviewManager() {
                 </div>
               </div>
 
-              <button onClick={saveCoreValues} disabled={saving} className="w-full px-4 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium disabled:opacity-50 flex items-center justify-center gap-2">
+              <button onClick={saveCoreValues} disabled={saving} className="w-full px-4 py-2.5 bg-red-600 text-white rounded-lg hover:bg-red-700 font-medium disabled:opacity-50 flex items-center justify-center gap-2">
                 {saving && <Loader className="w-4 h-4 animate-spin" />}
                 Save Core Values
               </button>

@@ -161,7 +161,7 @@ export default function TestimonialsManager() {
     return (
       <ProtectedRoute allowedRoles={['admin', 'staff-member']}>
         <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-          <Loader className="w-8 h-8 animate-spin text-blue-600" />
+          <Loader className="w-8 h-8 animate-spin text-red-600" />
         </div>
       </ProtectedRoute>
     );
@@ -179,7 +179,7 @@ export default function TestimonialsManager() {
             </div>
             <button
               onClick={() => setIsFormOpen(true)}
-              className="flex items-center gap-2 px-4 py-2.5 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors w-full sm:w-auto justify-center sm:justify-start"
+              className="flex items-center gap-2 px-4 py-2.5 bg-red-600 text-white rounded-lg font-medium hover:bg-red-700 transition-colors w-full sm:w-auto justify-center sm:justify-start"
             >
               <Plus className="w-5 h-5" />
               Add Testimonial
@@ -193,7 +193,7 @@ export default function TestimonialsManager() {
                 <p className="text-gray-500 mb-4">No testimonials created yet</p>
                 <button
                   onClick={() => setIsFormOpen(true)}
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
                 >
                   <Plus className="w-4 h-4" />
                   Add First Testimonial
@@ -244,7 +244,7 @@ export default function TestimonialsManager() {
                         <div className="flex gap-2 flex-wrap">
                           <button
                             onClick={() => handleEdit(testimonial)}
-                            className="flex items-center justify-center gap-2 px-3 py-2 bg-blue-50 text-blue-600 rounded hover:bg-blue-100 transition-colors text-sm font-medium flex-1"
+                            className="flex items-center justify-center gap-2 px-3 py-2 bg-green-50 text-green-700 rounded hover:bg-green-100 transition-colors text-sm font-medium flex-1"
                           >
                             <Edit2 className="w-4 h-4" />
                             Edit
@@ -320,7 +320,7 @@ export default function TestimonialsManager() {
                       value={formData.name}
                       onChange={handleInputChange}
                       placeholder="e.g., John Adewale"
-                      className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                      className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent text-sm"
                     />
                   </div>
 
@@ -335,7 +335,7 @@ export default function TestimonialsManager() {
                       value={formData.position}
                       onChange={handleInputChange}
                       placeholder="e.g., Project Manager, Alpha Industries"
-                      className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                      className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent text-sm"
                     />
                   </div>
 
@@ -350,7 +350,7 @@ export default function TestimonialsManager() {
                       onChange={handleInputChange}
                       placeholder="What did the client say about your service?"
                       rows="5"
-                      className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                      className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent text-sm"
                     />
                   </div>
 
@@ -363,7 +363,7 @@ export default function TestimonialsManager() {
                       name="rating"
                       value={formData.rating}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                      className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent text-sm"
                     >
                       <option value={5}>⭐⭐⭐⭐⭐ 5 Stars</option>
                       <option value={4}>⭐⭐⭐⭐ 4 Stars</option>
@@ -386,7 +386,7 @@ export default function TestimonialsManager() {
                     <button
                       type="submit"
                       disabled={saving}
-                      className="flex-1 px-4 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium disabled:opacity-50 flex items-center justify-center gap-2"
+                      className="flex-1 px-4 py-2.5 bg-red-600 text-white rounded-lg hover:bg-red-700 font-medium disabled:opacity-50 flex items-center justify-center gap-2"
                     >
                       {saving && <Loader className="w-4 h-4 animate-spin" />}
                       {editingId ? 'Update Testimonial' : 'Create Testimonial'}

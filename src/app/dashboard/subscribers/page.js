@@ -265,7 +265,7 @@ export default function Subscribers() {
 
           {/* Stats */}
           <div className="px-4 py-2 bg-red-50 rounded-lg">
-            <p className="text-xs text-gray-600">Total Subscribers</p>
+            <p className="text-xs text-gray-600 font-semibold">Total Subscribers</p>
             <p className="text-lg font-semibold text-gray-900">{subscribers.length}</p>
           </div>
 

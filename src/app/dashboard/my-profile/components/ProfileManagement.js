@@ -242,7 +242,7 @@ export default function ProfileManagement() {
             onClick={() => setActiveTab('profile')}
             className={`px-4 py-3 font-medium border-b-2 transition ${
               activeTab === 'profile'
-                ? 'border-blue-600 text-blue-600'
+                ? 'border-red-600 text-red-600'
                 : 'border-transparent text-gray-600 hover:text-gray-900'
             }`}
           >
@@ -252,7 +252,7 @@ export default function ProfileManagement() {
             onClick={() => setActiveTab('password')}
             className={`px-4 py-3 font-medium border-b-2 transition ${
               activeTab === 'password'
-                ? 'border-blue-600 text-blue-600'
+                ? 'border-red-600 text-red-600'
                 : 'border-transparent text-gray-600 hover:text-gray-900'
             }`}
           >
@@ -285,7 +285,7 @@ export default function ProfileManagement() {
                   <button
                     type="button"
                     onClick={() => fileInputRef.current?.click()}
-                    className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-medium"
+                    className="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition font-medium"
                   >
                     Change Photo
                   </button>
@@ -354,7 +354,7 @@ export default function ProfileManagement() {
                     value={profileForm.firstName}
                     onChange={handleProfileChange}
                     disabled={profileLoading}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition disabled:bg-gray-100"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600 transition disabled:bg-gray-100"
                     placeholder="John"
                   />
                 </div>
@@ -369,7 +369,7 @@ export default function ProfileManagement() {
                     value={profileForm.lastName}
                     onChange={handleProfileChange}
                     disabled={profileLoading}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition disabled:bg-gray-100"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600 transition disabled:bg-gray-100"
                     placeholder="Doe"
                   />
                 </div>
@@ -384,7 +384,7 @@ export default function ProfileManagement() {
                     value={profileForm.phone}
                     onChange={handleProfileChange}
                     disabled={profileLoading}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition disabled:bg-gray-100"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600 transition disabled:bg-gray-100"
                     placeholder="+1 ********"
                   />
                 </div>
@@ -399,7 +399,7 @@ export default function ProfileManagement() {
                     value={profileForm.company}
                     onChange={handleProfileChange}
                     disabled={profileLoading}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition disabled:bg-gray-100"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600 transition disabled:bg-gray-100"
                     placeholder="Your company"
                   />
                 </div>
@@ -414,7 +414,7 @@ export default function ProfileManagement() {
                     value={profileForm.department}
                     onChange={handleProfileChange}
                     disabled={profileLoading}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition disabled:bg-gray-100"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600 transition disabled:bg-gray-100"
                     placeholder="You role's department"
                   />
                 </div>
@@ -429,7 +429,7 @@ export default function ProfileManagement() {
                     value={profileForm.position}
                     onChange={handleProfileChange}
                     disabled={profileLoading}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition disabled:bg-gray-100"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600 transition disabled:bg-gray-100"
                     placeholder="Your position or title"
                   />
                 </div>
@@ -440,7 +440,7 @@ export default function ProfileManagement() {
                 <button
                   type="submit"
                   disabled={profileLoading}
-                  className="px-8 py-2 md:py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-60 disabled:cursor-not-allowed transition font-medium"
+                  className="px-8 py-2 md:py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:opacity-60 disabled:cursor-not-allowed transition font-medium"
                 >
                   {profileLoading ? 'Saving...' : 'Save Changes'}
                 </button>
@@ -486,7 +486,7 @@ export default function ProfileManagement() {
                   value={passwordForm.currentPassword}
                   onChange={handlePasswordChange}
                   disabled={passwordLoading}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition disabled:bg-gray-100"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600 transition disabled:bg-gray-100"
                   placeholder="Enter your current password"
                 />
               </div>
@@ -502,7 +502,7 @@ export default function ProfileManagement() {
                   value={passwordForm.newPassword}
                   onChange={handlePasswordChange}
                   disabled={passwordLoading}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition disabled:bg-gray-100"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600 transition disabled:bg-gray-100"
                   placeholder="Enter a new password"
                 />
                 <p className="text-xs text-gray-500 mt-2">
@@ -521,7 +521,7 @@ export default function ProfileManagement() {
                   value={passwordForm.confirmPassword}
                   onChange={handlePasswordChange}
                   disabled={passwordLoading}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition disabled:bg-gray-100"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600 transition disabled:bg-gray-100"
                   placeholder="Confirm your new password"
                 />
               </div>
@@ -531,7 +531,7 @@ export default function ProfileManagement() {
                 <button
                   type="submit"
                   disabled={passwordLoading}
-                  className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-60 disabled:cursor-not-allowed transition font-medium"
+                  className="px-8 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:opacity-60 disabled:cursor-not-allowed transition font-medium"
                 >
                   {passwordLoading ? 'Updating...' : 'Change Password'}
                 </button>

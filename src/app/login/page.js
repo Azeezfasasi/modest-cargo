@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
+import { Eye, EyeOff } from "lucide-react";
 
 
 export default function Login() {
@@ -21,6 +22,7 @@ export default function Login() {
   const [formData, setFormData] = useState({ email: "", password: "", remember: false });
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -80,22 +82,35 @@ export default function Login() {
 
           <div>
             <label htmlFor="password" className="block text-gray-700 font-medium mb-2">Password</label>
-            <input
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600"
-              placeholder="Enter your password"
-            />
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600 pr-12"
+                placeholder="Enter your password"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-3 text-gray-600 hover:text-gray-800"
+              >
+                {showPassword ? (
+                  <Eye className="text-amber-600" />
+                ) : (
+                  <EyeOff className="text-red-600" />
+                )}
+              </button>
+            </div>
           </div>
 
           <div className="flex items-center justify-between">
             <label className="flex items-center gap-2 text-gray-600">
               <input
                 type="checkbox"
-                name="remember"
+                name="remembe<EyeOff />r"
                 checked={formData.remember}
                 onChange={handleChange}
                 className="h-4 w-4 rounded border-gray-300 focus:ring-2 focus:ring-blue-900"

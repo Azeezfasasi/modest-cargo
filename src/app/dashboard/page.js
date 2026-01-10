@@ -38,7 +38,7 @@ export default function Dashboard() {
         </>
       ) : null}
 
-      {user?.role === 'admin' || user?.role === 'staff-member' ? (
+      {user?.role === 'staff-member' ? (
         <>
           <ShipmentChart />
         </>

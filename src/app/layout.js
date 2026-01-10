@@ -19,8 +19,13 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <AuthProvider>
-          <div className="site-main-header sticky top-0 z-50">
+          <div className='block lg:hidden'>
             <MessageSlides />
+          </div>
+          <div className="site-main-header sticky top-0 z-50">
+            <div className='hidden lg:block'>
+              <MessageSlides />
+            </div>
             <MainHeader />
           </div>
           <main>{children}</main>

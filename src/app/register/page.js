@@ -3,10 +3,12 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
+import { Eye, EyeOff } from "lucide-react";
 
 export default function Register() {
   const router = useRouter();
   const { register } = useAuth();
+  const [showPassword, setShowPassword] = useState(false);
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -103,28 +105,54 @@ export default function Register() {
 
           <div>
             <label htmlFor="password" className="block text-gray-700 font-medium mb-2">Password</label>
-            <input
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600"
-              placeholder="Enter password"
-            />
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600 pr-12"
+                placeholder="Enter password"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-3 text-gray-600 hover:text-gray-800"
+              >
+                {showPassword ? (
+                  <Eye className="text-amber-600" />
+                ) : (
+                  <EyeOff className="text-red-600" />
+                )}
+              </button>
+            </div>
           </div>
 
           <div>
             <label htmlFor="confirmPassword" className="block text-gray-700 font-medium mb-2">Confirm Password</label>
-            <input
-              type="password"
-              name="confirmPassword"
-              value={formData.confirmPassword}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600"
-              placeholder="Confirm password"
-            />
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                name="confirmPassword"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600 pr-12"
+                placeholder="Confirm password"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-3 text-gray-600 hover:text-gray-800"
+              >
+                {showPassword ? (
+                  <Eye className="text-amber-600" />
+                ) : (
+                  <EyeOff className="text-red-600" />
+                )}
+              </button>
+            </div>
           </div>
 
           <div className="flex items-center gap-2 text-gray-600">
